@@ -2,12 +2,12 @@
 
 public interface IAllocator
 {
-    AllocationCollection Allocate(List<Supervisor> supervisors, List<Student> students);
+    IEnumerable<Allocation> Allocate(List<Supervisor> supervisors, List<Student> students);
 }
 
 public class SimpleAllocatorWithUtilisationPenalty : IAllocator
 {
-    public AllocationCollection Allocate(List<Supervisor> supervisors, List<Student> students)
+    public IEnumerable<Allocation> Allocate(List<Supervisor> supervisors, List<Student> students)
     {
         var allocations = new List<Allocation>();
 
@@ -17,7 +17,7 @@ public class SimpleAllocatorWithUtilisationPenalty : IAllocator
                 {
                     Supervisor = supervisor,
                     Student = student,
-                    CommonTopics = supervisor.Topics.Intersect(student.Topics).Count(),
+                    CommonTopics = supervisor.Topics?.Intersect(student.Topics ?? Enumerable.Empty<string>()).Count(),
                     UtilizationPenalty = 100.0 * supervisor.SlotsTaken / supervisor.Capacity
                 })
                 .Where(x => x.Supervisor.AvailableCapacity > 0)
@@ -25,14 +25,12 @@ public class SimpleAllocatorWithUtilisationPenalty : IAllocator
                 .ThenBy(x => x.UtilizationPenalty)
                 .FirstOrDefault();
 
-            if (supervisorAllocations != null)
-            {
-                var supervisor = supervisorAllocations.Supervisor;
-                allocations.Add(new Allocation(supervisor, student));
-                supervisor.SlotsTaken++;
-            }
+            if (supervisorAllocations == null) continue;
+            var supervisor = supervisorAllocations.Supervisor;
+            allocations.Add(new Allocation(supervisor, student));
+            supervisor.SlotsTaken++;
         }
 
-        return new AllocationCollection(allocations);
+        return allocations;
     }
 }

@@ -4,10 +4,10 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        IAllocationExecutor executor = new AllocationExecutor();
-        executor.Execute(
-            new CsvParser(),
+        var executor = new AllocationExecutor(
+            new CsvParser(), 
             new SimpleAllocatorWithUtilisationPenalty(),
-            args);
+            new CsvOutputGenerator());
+        executor.Execute(args);
     }
 }

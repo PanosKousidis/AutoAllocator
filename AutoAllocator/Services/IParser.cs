@@ -37,7 +37,7 @@ public class CsvParser : IParser
         return supervisors;
     }
 
-    private static IEnumerable<T> GetRecords<T>(string file)
+    private static List<T> GetRecords<T>(string file)
     {
         using var reader = new StreamReader(file,
             new FileStreamOptions { Access = FileAccess.Read, Share = FileShare.ReadWrite });
@@ -48,7 +48,8 @@ public class CsvParser : IParser
 
     private static string[] GetTopics(ExpandoObject o)
     {
-        var topics = o.Where(x => x.Value?.ToString() == "X")
+        var topics = o
+            .Where(x => x.Value?.ToString()?.Equals("X", StringComparison.OrdinalIgnoreCase) == true)
             .Select(x => x.Key);
         return topics.ToArray();
     }
