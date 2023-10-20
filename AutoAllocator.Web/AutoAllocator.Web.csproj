@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Markdig" Version="0.33.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.12"/>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.12" PrivateAssets="all"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AutoAllocator.Logic\AutoAllocator.Logic.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="..\README.md">
+        <Link>Resources\README.md</Link>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="..\AutoAllocator.Logic\Resources\students.sample.csv">
+        <Link>Resources\students.sample.csv</Link>
+      </EmbeddedResource>
+      <EmbeddedResource Include="..\AutoAllocator.Logic\Resources\supervisors.sample.csv">
+        <Link>Resources\supervisors.sample.csv</Link>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="AutoAllocator.Web.csproj.DotSettings" />
+    </ItemGroup>
+
+</Project>

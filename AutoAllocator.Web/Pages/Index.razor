@@ -1,0 +1,47 @@
+﻿@page "/"
+@using AutoAllocator.Logic
+@using AutoAllocator.Logic.Model
+<PageTitle>Index</PageTitle>
+
+<p>Supervisors csv file (<a href="@studentsSampleUrl" download="Students.csv">Example</a>) : <InputFile OnChange="HandleSupervisorFileSelected" /></p>
+<p>Students csv file (<a href="@supervisorsSampleUrl" download="Supervisors.csv">Example</a>) : <InputFile OnChange="HandleStudentsFileSelected" /></p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Capacity</th>
+        <th>Free Slots</th>
+        <th>Topics</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var supervisor in FileService?.SupervisorsList ?? Enumerable.Empty<Supervisor>())
+    {
+        <tr>
+            <td>@supervisor.Name</td>
+            <td>@supervisor.Capacity</td>
+            <td>@supervisor.AvailableCapacity</td>
+            <td>@string.Join(", ", supervisor.Topics ?? Enumerable.Empty<string>())</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Topics</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var student in FileService?.StudentsList ?? Enumerable.Empty<Student>())
+    {
+        <tr>
+            <td>@student.Name</td>
+            <td>@string.Join(", ", student.Topics ?? Enumerable.Empty<string>())</td>
+        </tr>
+    }
+    </tbody>
+</table>

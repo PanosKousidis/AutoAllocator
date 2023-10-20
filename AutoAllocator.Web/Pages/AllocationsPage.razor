@@ -1,0 +1,36 @@
+﻿@page "/allocations"
+
+<PageTitle>Allocations</PageTitle>
+
+<h1>Allocations</h1>
+
+@if (Allocations == null)
+{
+    <p>
+        <em>Calculating allocations...</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Student</th>
+            <th>Supervisor</th>
+            <th>Topic(s)</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var allocation in Allocations)
+        {
+            <tr>
+                <td>@allocation.Student.Name</td>
+                <td>@allocation.Supervisor.Name</td>
+                <td>@string.Join(", ", allocation.Student.Topics?.Intersect(allocation.Supervisor.Topics
+                                                                            ?? Enumerable.Empty<string>())
+                                       ?? Enumerable.Empty<string>())</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
