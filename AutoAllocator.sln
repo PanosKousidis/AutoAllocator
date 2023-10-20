@@ -1,12 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoAllocator", "AutoAllocator\AutoAllocator.csproj", "{92D62238-4CCC-4F68-AC9C-3537B10028BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoAllocator.Console", "AutoAllocator.Console\AutoAllocator.Console.csproj", "{92D62238-4CCC-4F68-AC9C-3537B10028BC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{373C9B38-8F2F-4065-AED4-88BCDC4C61A7}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		README.md = README.md
+		.github\workflows\azure-static-web-apps-delightful-cliff-034f07403.yml = .github\workflows\azure-static-web-apps-delightful-cliff-034f07403.yml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoAllocator.Web", "AutoAllocator.Web\AutoAllocator.Web.csproj", "{84B8962F-463B-4852-B598-815D5C87C11D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoAllocator.Logic", "AutoAllocator.Logic\AutoAllocator.Logic.csproj", "{AA7C7652-5422-4DEE-80E5-D0F5DCA07F88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +23,15 @@ Global
 		{92D62238-4CCC-4F68-AC9C-3537B10028BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92D62238-4CCC-4F68-AC9C-3537B10028BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92D62238-4CCC-4F68-AC9C-3537B10028BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84B8962F-463B-4852-B598-815D5C87C11D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84B8962F-463B-4852-B598-815D5C87C11D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84B8962F-463B-4852-B598-815D5C87C11D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84B8962F-463B-4852-B598-815D5C87C11D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA7C7652-5422-4DEE-80E5-D0F5DCA07F88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA7C7652-5422-4DEE-80E5-D0F5DCA07F88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA7C7652-5422-4DEE-80E5-D0F5DCA07F88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA7C7652-5422-4DEE-80E5-D0F5DCA07F88}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 EndGlobal
